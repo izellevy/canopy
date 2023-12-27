@@ -32,6 +32,7 @@ from canopy.models.api_models import (
     ChatResponse,
 )
 from canopy.models.data_models import Context, UserMessage
+from canopy_server.auth.token_manager import authenticate
 from .models.v1.api_models import (
     ChatRequest,
     ContextQueryRequest,
@@ -84,6 +85,10 @@ app: FastAPI = FastAPI(
 openai_api_router = APIRouter()
 context_api_router = APIRouter(prefix="/context")
 application_router = APIRouter(tags=["Application"])
+
+# Register the custom middleware
+app.middleware("http")(authenticate)
+
 
 # Global variables - Engines
 context_engine: ContextEngine

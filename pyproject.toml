@@ -34,6 +34,7 @@ tokenizers = "^0.15.0"
 transformers = "^4.35.2"
 sentencepiece = "^0.1.99"
 cohere = { version = ">=4.37", optional = true }
+pyjwt = "^2.8.0"
 
 [tool.poetry.extras]
 cohere = ["cohere"]
